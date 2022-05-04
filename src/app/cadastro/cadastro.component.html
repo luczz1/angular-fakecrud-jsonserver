@@ -1,5 +1,4 @@
-<form *ngIf="!enviado" class="cForm" novalidate [formGroup]="cadastroForm" (ngSubmit)="enviarForm()">
-  <h2 class="text-center">Cadastro de Item</h2>
+<form class="cForm" novalidate [formGroup]="cadastroForm" (ngSubmit)="enviarForm()">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">Nome</label>
@@ -34,13 +33,3 @@
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
-
-  <div *ngIf="enviado">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h3 class="text-center"><strong>{{itemName}}</strong> foi cadastrado com sucesso.</h3>
-        <p class="lead text-center mt-3">Você pode <a (click)="enviado = false" class="color-primary" style="cursor: pointer; text-decoration: none;">
-          adicionar um novo item</a> ou <a routerLink="/lista" class="color-primary" style="cursor: pointer; text-decoration: none;">voltar para o menu principal</a>.</p>
-      </div>
-    </div>
-  </div>

@@ -5,9 +5,12 @@
 }
 
 .sbtn {
-    width: 50%;
+    width: 20%;
     margin: auto;
     margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 435px;
+    display: inline;
 }
 
 .errmsg {
@@ -18,4 +21,30 @@
 
 .txtitulo:hover {
     color: #0275d8;
+}
+
+.form-select {
+    width: 13%;
+    display: inline;
+    margin: auto;
+}
+
+.mbtn {
+    margin-left: 13px;
+    width: 12%;
+}
+
+
+@media (max-width: 800px) {
+    .sbtn {
+        width: 50%;
+        margin: auto;
+        margin-top: 30px;
+        margin-right: 20px;
+        margin-left: 50px;
+    }
+    .form-select {
+        width: 25%;
+        margin: auto;
+    }
 }

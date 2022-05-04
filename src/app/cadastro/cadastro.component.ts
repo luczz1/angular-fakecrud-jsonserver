@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ItemsService } from '../services/items.service';
 import { DadosModel } from './dadosform.model';
@@ -17,8 +17,8 @@ export class CadastroComponent implements OnInit {
   })
 
   formList: DadosModel[] = []
-  enviado: boolean = false
   itemName: string
+  @Output() successfullyRegistered = new EventEmitter<any>()
 
   constructor(private itemsService: ItemsService) { }
 
@@ -28,15 +28,15 @@ export class CadastroComponent implements OnInit {
   enviarForm(): void {
     if (this.cadastroForm.valid) {
       let dadosForm = new DadosModel(
-        this.cadastroForm.get('name').value,
-        this.cadastroForm.get('description').value,
-        this.cadastroForm.get('additionalInfos').value
+        this.cadastroForm.get('name').value.trim(),
+        this.cadastroForm.get('description').value.trim(),
+        this.cadastroForm.get('additionalInfos').value.trim()
       )
       this.itemsService.infosDoForm(dadosForm).subscribe((dadosRecebidos: any) => {
         this.formList = dadosRecebidos
         this.itemName = dadosRecebidos.name
-        this.enviado = true
         this.cadastroForm.reset()
+        this.successfullyRegistered.emit(true)
       })
       
     } else {

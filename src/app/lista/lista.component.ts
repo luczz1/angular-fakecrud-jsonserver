@@ -1,8 +1,7 @@
-import { Location } from '@angular/common';
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DadosModel } from '../cadastro/dadosform.model';
 import { ItemsService } from '../services/items.service';
-import { EditarItemComponent } from './editar-item/editar-item.component';
 
 @Component({
   selector: 'app-lista',
@@ -18,16 +17,22 @@ export class ListaComponent implements OnInit {
 
   listaItems: DadosModel[] = []
   itemID: number
+  occult: boolean = false
+  @ViewChild('modalCadastro')
+  modalCadastro: TemplateRef<any>
 
-  constructor(private itemsService: ItemsService) { }
+
+  constructor(private itemsService: ItemsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getItemsFunction()
   }
 
   deleteInfo(name: string) : void {
+    
     let confirmdelete = confirm(`Deseja excluir ${name}?`)
     if(confirmdelete) {
+      console.log(this.itemID)
       this.itemsService.detailsItem(name).subscribe(itemID => {
         this.itemID = itemID[0].id
         this.itemsService.deleteInfo(this.itemID).subscribe()
@@ -43,6 +48,16 @@ export class ListaComponent implements OnInit {
     })
   }
 
+  updateList(event?: any) {
+    this.listaItems = []
+    this.getItemsFunction()
+    this.modalService.dismissAll()
+  }
+
+  abrirModal() {
+    this.modalService.open(this.modalCadastro)
+  }
+
   getItemsFunction() {
     this.listaItems = []
     this.itemsService.getInfos().subscribe((dados: any) => {
@@ -51,5 +66,6 @@ export class ListaComponent implements OnInit {
       });
     })
   }
+  
 
 }

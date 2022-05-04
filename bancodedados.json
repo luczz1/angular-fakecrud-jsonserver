@@ -1,10 +1,16 @@
 {
   "items": [
     {
-      "name": "Teste",
-      "description": "Descrição Teste",
+      "name": "Exemplo 1",
+      "description": "Descrição de Exemplo",
       "additionalInfos": "Tipo A",
-      "id": 3
+      "id": 1
+    },
+    {
+      "name": "Exemplo 2",
+      "description": "Descrição de Exemplo 2",
+      "additionalInfos": "Tipo B",
+      "id": 2
     }
   ]
 }

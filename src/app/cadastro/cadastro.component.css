@@ -1,8 +1,7 @@
 .cForm {
     margin: auto;
-    width: 50%;
+    width: 100%;
     background-color: rgb(250, 250, 250);
-    margin-top: 30px;
     padding: 20px;
 }
 
@@ -16,7 +15,7 @@
 
 .form-group {
     margin: auto;
-    width: 80%;
+    width: 100%;
 }
 
 input.ng-invalid.ng-dirty {

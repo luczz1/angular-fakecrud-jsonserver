@@ -9,6 +9,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListaComponent } from './lista/lista.component';
 import { DetalhesItemComponent } from './lista/detalhes-item/detalhes-item.component';
 import { EditarItemComponent } from './lista/editar-item/editar-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditarItemComponent } from './lista/editar-item/editar-item.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,42 @@
+<button type="button" (click)="deleteInfo()"  class="btdelete btn">🗑️</button>
+<form class="cForm" *ngFor="let items of itemEditDetail" novalidate [formGroup]="editForm" >
+
+    <h2 class="text-center">Editar Item</h2> 
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" id="name" (input)="saveAlt()" [(ngModel)]="items.name" formControlName="name" required minlength="3" autocomplete="off" maxlength="26">
+
+          <span class="text text-danger" 
+          *ngIf="editForm.get('name').dirty && editForm.get('name').hasError('required')">
+          Campo obrigatório</span>
+          <span class="text text-danger" 
+          *ngIf="editForm.get('name').dirty && editForm.get('name').hasError('minlength')">
+          Mínimo de 3 caracteres</span>
+        </div>
+
+        <div class="form-group col-md-6 mt-3">
+          <label for="description">Descrição</label>
+          <input type="text" class="form-control" id="description" (input)="saveAlt()" [(ngModel)]="items.description" formControlName="description" required minlength="12" autocomplete="off" maxlength="225">
+
+          <span class="text text-danger" 
+          *ngIf="editForm.get('description').dirty && editForm.get('description').hasError('required')">
+          Campo obrigatório</span>
+          <span class="text text-danger" 
+          *ngIf="editForm.get('description').dirty && editForm.get('description').hasError('minlength')">
+          Mínimo de 12 caracteres</span>
+        </div>
+  
+        <div class="form-group col-md-6 mt-3">
+          <label for="additionalInfos">Tipo/modelo</label>
+          <input type="text" class="form-control" [(ngModel)]="items.additionalInfos"  id="additionalInfos" (input)="saveAlt()" formControlName="additionalInfos" autocomplete="off" maxlength="20">
+        </div>
+        <div *ngIf="editForm.dirty" class="text-muted text-center">
+          <small>{{saveMsg}}</small>
+        </div>
+      </div>
+      <button type="button" (click)="saveEdit()"  class="btn btn-primary">Salvar</button>
+      <button type="button" routerLink="/lista" class="btn btn-dark" style="margin-right: 20px;">Voltar</button>
+     
+    </form>

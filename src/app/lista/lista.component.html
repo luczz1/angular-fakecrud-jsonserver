@@ -1,0 +1,22 @@
+<h1 class="jumbotron text-center mt-3">Lista de Itens</h1>
+<input class="sbtn form-control mr-sm-2" type="search" placeholder="Pesquisa por nome" (input)="pesquisaNome(campoPesquisa.value)" #campoPesquisa>
+<div class="list-group" *ngFor="let item of listaItems">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+
+        <div class="txtitulo d-flex w-100 justify-content-between">
+            <h5 class=" mb-1" routerLink="/detalhes/{{item.name}}" style="cursor: pointer;">{{item.name}}</h5>
+        </div>
+        <p class="mb-1">{{item.description}}</p>
+
+        <small>{{item.additionalInfos}}</small>
+        <div class="d-flex w-100 justify-content-end">
+            <button class="btnedit btn" routerLink="/editar/{{item.name}}">✏️</button><button class="btndelete btn" (click)="deleteInfo(item.name)">🗑️</button>
+        </div>
+    </a>
+
+</div>
+
+
+<div class="errmsg lead" *ngIf="listaItems.length == 0">
+    Nenhum item para mostrar.
+</div>

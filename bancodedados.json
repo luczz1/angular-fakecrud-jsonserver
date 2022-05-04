@@ -1,0 +1,10 @@
+{
+  "items": [
+    {
+      "name": "Teste",
+      "description": "Descrição Teste",
+      "additionalInfos": "Tipo A",
+      "id": 3
+    }
+  ]
+}

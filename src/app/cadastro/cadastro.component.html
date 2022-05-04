@@ -1,0 +1,46 @@
+<form *ngIf="!enviado" class="cForm" novalidate [formGroup]="cadastroForm" (ngSubmit)="enviarForm()">
+  <h2 class="text-center">Cadastro de Item</h2>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name" required minlength="3" autocomplete="off" maxlength="26">
+
+        <span class="text text-danger" 
+        *ngIf="cadastroForm.get('name').dirty && cadastroForm.get('name').hasError('required')">
+        Campo obrigatório</span>
+        <span class="text text-danger" 
+        *ngIf="cadastroForm.get('name').dirty && cadastroForm.get('name').hasError('minlength')">
+        Mínimo de 3 caracteres</span>
+
+      </div>
+      <div class="form-group col-md-6 mt-3">
+        <label for="description">Descrição</label>
+        <input type="text" class="form-control" id="description" placeholder="Descrição" formControlName="description" required minlength="12" autocomplete="off" maxlength="225">
+
+        <span class="text text-danger" 
+        *ngIf="cadastroForm.get('description').dirty && cadastroForm.get('description').hasError('required')">
+        Campo obrigatório</span>
+        <span class="text text-danger" 
+        *ngIf="cadastroForm.get('description').dirty && cadastroForm.get('description').hasError('minlength')">
+        Mínimo de 12 caracteres</span>
+
+      </div>
+
+      <div class="form-group col-md-6 mt-3">
+        <label for="additionalInfos">Tipo/modelo</label>
+        <input type="text" class="form-control" id="additionalInfos" placeholder="Tipo/modelo" formControlName="additionalInfos" autocomplete="off" maxlength="20">
+      
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+  <div *ngIf="enviado">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h3 class="text-center"><strong>{{itemName}}</strong> foi cadastrado com sucesso.</h3>
+        <p class="lead text-center mt-3">Você pode <a (click)="enviado = false" class="color-primary" style="cursor: pointer; text-decoration: none;">
+          adicionar um novo item</a> ou <a routerLink="/lista" class="color-primary" style="cursor: pointer; text-decoration: none;">voltar para o menu principal</a>.</p>
+      </div>
+    </div>
+  </div>

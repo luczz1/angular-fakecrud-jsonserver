@@ -1,0 +1,21 @@
+.list-group {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.sbtn {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.errmsg {
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.txtitulo:hover {
+    color: #0275d8;
+}

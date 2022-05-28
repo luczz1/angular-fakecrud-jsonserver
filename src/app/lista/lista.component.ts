@@ -29,17 +29,17 @@ export class ListaComponent implements OnInit {
   }
 
   deleteInfo(name: string) : void {
-    
+
     let confirmdelete = confirm(`Deseja excluir ${name}?`)
     if(confirmdelete) {
-      console.log(this.itemID)
       this.itemsService.detailsItem(name).subscribe(itemID => {
+        this.listaItems = []
         this.itemID = itemID[0].id
         this.itemsService.deleteInfo(this.itemID).subscribe()
         this.getItemsFunction()
       })
     }
-   
+
   }
 
   pesquisaNome(valorPesquisa: string) : void {
@@ -66,6 +66,6 @@ export class ListaComponent implements OnInit {
       });
     })
   }
-  
+
 
 }

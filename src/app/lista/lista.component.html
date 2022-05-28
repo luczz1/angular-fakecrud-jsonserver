@@ -4,7 +4,7 @@
 <h1 class="jumbotron text-center mt-3">Lista de Itens</h1>
 
 <div class="inline">
-    <input class="sbtn form-control mr-sm-2" type="search" placeholder="Pesquisa por nome"
+    <input class="sbtn form-control" type="search" placeholder="Pesquisa por nome"
         (input)="pesquisaNome(campoPesquisa.value)" #campoPesquisa>
 
     <button type="button" class="mbtn btn btn-dark" (click)="abrirModal()">
@@ -13,7 +13,7 @@
 </div>
 
 
-  
+
 <div class="list-group" *ngFor="let item of listaItems">
     <a class="list-group-item list-group-item-action flex-column align-items-start">
 
@@ -49,4 +49,3 @@
         </div>
   </ng-template>
 
-  
